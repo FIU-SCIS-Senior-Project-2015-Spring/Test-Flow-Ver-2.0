@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- style sheets begin -->
+    <link rel="stylesheet" href="/Content/bootstrap.css">
+    <link rel="stylesheet" href="/Content/animate.css">
+    <link rel="stylesheet" href="/Content/toastr.css">
+    <link rel="stylesheet" href="/Content/main.css">
+    <link rel="stylesheet" href="/Content/fontawesome.css">
+    <!-- style sheets end -->
+</head>
+<body ng-app="initProjApp">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div id="top-bar">
+        <div class="container-fluid">
+            <div class="col-md-6">
+                <ul class="nav-inline fadeInDown animated">
+                    <li>
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="projectsDDM" data-toggle="dropdown"> Projects <span class="caret"></span></button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="projectsDDM">
+                                <li role="presentation" class="divider"></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/Collections"><span class="glyphicon glyphicon-cog"></span> Configure Test Manager Hosts</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="testplansDDM" data-toggle="dropdown"> Test Plans <span class="caret"></span></button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="testplansDDM">
+                                <li role="presentation" class="divider"></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" id="createTestPlan"><span class="glyphicon glyphicon-plus"></span> Create New Test Plan</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <ul class="nav-inline pull-right fadeInDown animated">
+                    <li><a class="btn btn-default">@ViewBag.Username</a></li>
+                    <li><a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-question-sign"></span></a></li>
+                    <li><a class="btn btn-primary" href="/Logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add your site or application content here -->
+    <div class="container-fluid" ng-view="">
+
+
+    </div>
+
+    <div class="loader">
+        <div class="cont">
+            <div class="graphics">
+                <div id="sphere-wrapper">
+                    <div class="sphere s-gold"></div>
+                    <div class="sphere s-5"></div>
+                    <div class="sphere s-4"></div>
+                    <div class="sphere s-3"></div>
+                    <div class="sphere s-2"></div>
+                    <div class="sphere s-1"></div>
+                </div>
+            </div>
+            <div class="msg">
+                <h1>Loading...</h1>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel"></h4>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="/Scripts/Angular/Compatibility/es5-shim.js"></script>
+    <script src="/Scripts/Angular/Compatibility/json3.js"></script>
+    <![endif]-->
+
+    <!-- Non-Angular Specific Dependencies -->
+    <script src="/Scripts/jquery.min.js"></script>
+    <script src="/Scripts/bootstrap.min.js"></script>
+    <script src="/Scripts/toastr.js"></script>
+    <script src="/Scripts/Chart.min.js"></script>
+    <!-- endNon-Angular Specific Dependencies -->
+
+    <!-- non-Angular Code -->
+    <script src="~/Scripts/Angular/Libs/ProjectManager.js"></script>
+    <script src="~/Scripts/Angular/Libs/TestFlowInit.js"></script>
+    <script src="~/Scripts/Angular/Libs/TestElement.js"></script>
+    <script src="~/Scripts/Angular/Libs/TestElementCopyPaste.js"></script>
+    <script src="~/Scripts/Angular/Libs/TestFlowMetrics.js"></script>
+    <!-- endNon-Angular Code-->
+
+    <!-- Angular Dependencies -->
+    <script src="/Scripts/Angular/angular.min.js"></script>
+    <script src="/Scripts/Angular/angular-resource.min.js"></script>
+    <script src="/Scripts/Angular/angular-cookies.min.js"></script>
+    <script src="/Scripts/Angular/angular-sanitize.min.js"></script>
+    <script src="/Scripts/Angular/angular-animate.min.js"></script>
+    <script src="/Scripts/Angular/angular-touch.min.js"></script>
+    <script src="/Scripts/Angular/angular-route.min.js"></script>
+    <script src="/Scripts/Angular/textAngular-sanitize.min.js"></script>
+    <script src="/Scripts/Angular/textAngular.min.js"></script>
+    <script src="/Scripts/Angular/angularLocalStorage.js"></script>
+    <!-- endAngular Dependencies -->
+
+    <!-- Controllers -->
+    <script src="/Scripts/Angular/Controllers/app.js"></script>
+    <script src="/Scripts/Angular/Controllers/Workspace/workspace2.js"></script>
+    <script src="/Scripts/Angular/Controllers/Projects/projects.js"></script>
+    <!--
+    <script src="/scripts/controllers/alternative.js"></script>
+    <script src="/scripts/controllers/analytics.js"></script>
+        -->
+    <!-- endControllers -->
+</body>
+</html>

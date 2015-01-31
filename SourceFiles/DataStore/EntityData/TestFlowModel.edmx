@@ -1,0 +1,649 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="testflowModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TF_Case_Metrics">
+          <Key>
+            <PropertyRef Name="Metrics_Id" />
+          </Key>
+          <Property Name="Metrics_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TestCase_Id" Type="int" Nullable="false" />
+          <Property Name="Metrics_Desc" Type="text" Nullable="false" />
+          <Property Name="Failed" Type="int" Nullable="false" />
+          <Property Name="Fail_Cause" Type="text" Nullable="false" />
+          <Property Name="Update_Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TF_Collection_Types">
+          <Key>
+            <PropertyRef Name="Type_Id" />
+          </Key>
+          <Property Name="Type_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TF_Collections">
+          <Key>
+            <PropertyRef Name="Collection_Id" />
+          </Key>
+          <Property Name="Collection_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Host" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Type_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TF_Projects">
+          <Key>
+            <PropertyRef Name="Project_Id" />
+          </Key>
+          <Property Name="Project_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Collection_Id" Type="int" Nullable="false" />
+          <Property Name="External_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TF_Step">
+          <Key>
+            <PropertyRef Name="Step_Id" />
+          </Key>
+          <Property Name="Step_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="text" Nullable="false" />
+          <Property Name="Results" Type="text" Nullable="false" />
+          <Property Name="Parent" Type="int" Nullable="false" />
+          <Property Name="TestCase_Id" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Modified" Type="datetime" Nullable="false" />
+          <Property Name="External_Id" Type="int" Nullable="false" />
+          <Property Name="Parent_External_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="TF_Suites">
+          <Key>
+            <PropertyRef Name="Suite_Id" />
+          </Key>
+          <Property Name="Suite_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Description" Type="text" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Modified" Type="datetime" Nullable="false" />
+          <Property Name="TestPlan_Id" Type="int" Nullable="false" />
+          <Property Name="Parent" Type="int" Nullable="false" />
+          <Property Name="External_Id" Type="int" Nullable="false" />
+          <Property Name="Parent_External_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="TF_TestCases">
+          <Key>
+            <PropertyRef Name="TestCase_Id" />
+          </Key>
+          <Property Name="TestCase_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Suite_Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="text" Nullable="false" />
+          <Property Name="Description" Type="text" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Modified" Type="datetime" Nullable="false" />
+          <Property Name="External_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TF_TestPlan">
+          <Key>
+            <PropertyRef Name="TestPlan_Id" />
+          </Key>
+          <Property Name="TestPlan_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Project_Id" Type="int" Nullable="false" />
+          <Property Name="External_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TF_User">
+          <Key>
+            <PropertyRef Name="User_Id" />
+          </Key>
+          <Property Name="User_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TF_User_Permissions">
+          <Key>
+            <PropertyRef Name="Permission_Id" />
+          </Key>
+          <Property Name="Permission_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Id" Type="int" Nullable="false" />
+          <Property Name="Collection_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TF_Case_Metrics_TF_TestCases">
+          <End Role="TF_TestCases" Type="Self.TF_TestCases" Multiplicity="1" />
+          <End Role="TF_Case_Metrics" Type="Self.TF_Case_Metrics" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TF_TestCases">
+              <PropertyRef Name="TestCase_Id" />
+            </Principal>
+            <Dependent Role="TF_Case_Metrics">
+              <PropertyRef Name="Metrics_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TF_Collections_TF_Collection_Types">
+          <End Role="TF_Collection_Types" Type="Self.TF_Collection_Types" Multiplicity="1" />
+          <End Role="TF_Collections" Type="Self.TF_Collections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TF_Collection_Types">
+              <PropertyRef Name="Type_Id" />
+            </Principal>
+            <Dependent Role="TF_Collections">
+              <PropertyRef Name="Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TF_Projects_TF_Collections">
+          <End Role="TF_Collections" Type="Self.TF_Collections" Multiplicity="1" />
+          <End Role="TF_Projects" Type="Self.TF_Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TF_Collections">
+              <PropertyRef Name="Collection_Id" />
+            </Principal>
+            <Dependent Role="TF_Projects">
+              <PropertyRef Name="Collection_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TF_Step_TF_TestCases">
+          <End Role="TF_TestCases" Type="Self.TF_TestCases" Multiplicity="1" />
+          <End Role="TF_Step" Type="Self.TF_Step" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TF_TestCases">
+              <PropertyRef Name="TestCase_Id" />
+            </Principal>
+            <Dependent Role="TF_Step">
+              <PropertyRef Name="TestCase_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TF_TestCases_TF_Suites">
+          <End Role="TF_Suites" Type="Self.TF_Suites" Multiplicity="1" />
+          <End Role="TF_TestCases" Type="Self.TF_TestCases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TF_Suites">
+              <PropertyRef Name="Suite_Id" />
+            </Principal>
+            <Dependent Role="TF_TestCases">
+              <PropertyRef Name="Suite_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TF_TestPlan_TF_Projects">
+          <End Role="TF_Projects" Type="Self.TF_Projects" Multiplicity="1" />
+          <End Role="TF_TestPlan" Type="Self.TF_TestPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TF_Projects">
+              <PropertyRef Name="Project_Id" />
+            </Principal>
+            <Dependent Role="TF_TestPlan">
+              <PropertyRef Name="Project_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TF_User_Permissions_TF_Collections">
+          <End Role="TF_Collections" Type="Self.TF_Collections" Multiplicity="1" />
+          <End Role="TF_User_Permissions" Type="Self.TF_User_Permissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TF_Collections">
+              <PropertyRef Name="Collection_Id" />
+            </Principal>
+            <Dependent Role="TF_User_Permissions">
+              <PropertyRef Name="Collection_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="testflowModelStoreContainer">
+          <EntitySet Name="TF_Case_Metrics" EntityType="Self.TF_Case_Metrics" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TF_Collection_Types" EntityType="Self.TF_Collection_Types" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TF_Collections" EntityType="Self.TF_Collections" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TF_Projects" EntityType="Self.TF_Projects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TF_Step" EntityType="Self.TF_Step" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TF_Suites" EntityType="Self.TF_Suites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TF_TestCases" EntityType="Self.TF_TestCases" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TF_TestPlan" EntityType="Self.TF_TestPlan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TF_User" EntityType="Self.TF_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TF_User_Permissions" EntityType="Self.TF_User_Permissions" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TF_Case_Metrics_TF_TestCases" Association="Self.FK_TF_Case_Metrics_TF_TestCases">
+            <End Role="TF_TestCases" EntitySet="TF_TestCases" />
+            <End Role="TF_Case_Metrics" EntitySet="TF_Case_Metrics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TF_Collections_TF_Collection_Types" Association="Self.FK_TF_Collections_TF_Collection_Types">
+            <End Role="TF_Collection_Types" EntitySet="TF_Collection_Types" />
+            <End Role="TF_Collections" EntitySet="TF_Collections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TF_Projects_TF_Collections" Association="Self.FK_TF_Projects_TF_Collections">
+            <End Role="TF_Collections" EntitySet="TF_Collections" />
+            <End Role="TF_Projects" EntitySet="TF_Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TF_Step_TF_TestCases" Association="Self.FK_TF_Step_TF_TestCases">
+            <End Role="TF_TestCases" EntitySet="TF_TestCases" />
+            <End Role="TF_Step" EntitySet="TF_Step" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TF_TestCases_TF_Suites" Association="Self.FK_TF_TestCases_TF_Suites">
+            <End Role="TF_Suites" EntitySet="TF_Suites" />
+            <End Role="TF_TestCases" EntitySet="TF_TestCases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TF_TestPlan_TF_Projects" Association="Self.FK_TF_TestPlan_TF_Projects">
+            <End Role="TF_Projects" EntitySet="TF_Projects" />
+            <End Role="TF_TestPlan" EntitySet="TF_TestPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TF_User_Permissions_TF_Collections" Association="Self.FK_TF_User_Permissions_TF_Collections">
+            <End Role="TF_Collections" EntitySet="TF_Collections" />
+            <End Role="TF_User_Permissions" EntitySet="TF_User_Permissions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="testflowModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TF_Case_Metrics">
+          <Key>
+            <PropertyRef Name="Metrics_Id" />
+          </Key>
+          <Property Name="Metrics_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TestCase_Id" Type="Int32" Nullable="false" />
+          <Property Name="Metrics_Desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Failed" Type="Int32" Nullable="false" />
+          <Property Name="Fail_Cause" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Update_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TF_TestCases" Relationship="Self.FK_TF_Case_Metrics_TF_TestCases" FromRole="TF_Case_Metrics" ToRole="TF_TestCases" />
+        </EntityType>
+        <EntityType Name="TF_Collection_Types">
+          <Key>
+            <PropertyRef Name="Type_Id" />
+          </Key>
+          <Property Name="Type_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TF_Collections" Relationship="Self.FK_TF_Collections_TF_Collection_Types" FromRole="TF_Collection_Types" ToRole="TF_Collections" />
+        </EntityType>
+        <EntityType Name="TF_Collections">
+          <Key>
+            <PropertyRef Name="Collection_Id" />
+          </Key>
+          <Property Name="Collection_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Host" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Type_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TF_Collection_Types" Relationship="Self.FK_TF_Collections_TF_Collection_Types" FromRole="TF_Collections" ToRole="TF_Collection_Types" />
+          <NavigationProperty Name="TF_Projects" Relationship="Self.FK_TF_Projects_TF_Collections" FromRole="TF_Collections" ToRole="TF_Projects" />
+          <NavigationProperty Name="TF_User_Permissions" Relationship="Self.FK_TF_User_Permissions_TF_Collections" FromRole="TF_Collections" ToRole="TF_User_Permissions" />
+        </EntityType>
+        <EntityType Name="TF_Projects">
+          <Key>
+            <PropertyRef Name="Project_Id" />
+          </Key>
+          <Property Name="Project_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Collection_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TF_Collections" Relationship="Self.FK_TF_Projects_TF_Collections" FromRole="TF_Projects" ToRole="TF_Collections" />
+          <NavigationProperty Name="TF_TestPlan" Relationship="Self.FK_TF_TestPlan_TF_Projects" FromRole="TF_Projects" ToRole="TF_TestPlan" />
+          <Property Name="External_Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TF_Step">
+          <Key>
+            <PropertyRef Name="Step_Id" />
+          </Key>
+          <Property Name="Step_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Results" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Parent" Type="Int32" Nullable="false" />
+          <Property Name="TestCase_Id" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TF_TestCases" Relationship="Self.FK_TF_Step_TF_TestCases" FromRole="TF_Step" ToRole="TF_TestCases" />
+          <Property Name="External_Id" Type="Int32" Nullable="false" />
+          <Property Name="Parent_External_Id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TF_Suites">
+          <Key>
+            <PropertyRef Name="Suite_Id" />
+          </Key>
+          <Property Name="Suite_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TestPlan_Id" Type="Int32" Nullable="false" />
+          <Property Name="Parent" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TF_TestPlan" Relationship="Self.FK_TF_Suites_TF_TestPlan" FromRole="TF_Suites" ToRole="TF_TestPlan" />
+          <NavigationProperty Name="TF_TestCases" Relationship="Self.FK_TF_TestCases_TF_Suites" FromRole="TF_Suites" ToRole="TF_TestCases" />
+          <Property Name="External_Id" Type="Int32" Nullable="false" />
+          <Property Name="Parent_External_Id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TF_TestCases">
+          <Key>
+            <PropertyRef Name="TestCase_Id" />
+          </Key>
+          <Property Name="TestCase_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Suite_Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedBy" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TF_Case_Metrics" Relationship="Self.FK_TF_Case_Metrics_TF_TestCases" FromRole="TF_TestCases" ToRole="TF_Case_Metrics" />
+          <NavigationProperty Name="TF_Step" Relationship="Self.FK_TF_Step_TF_TestCases" FromRole="TF_TestCases" ToRole="TF_Step" />
+          <NavigationProperty Name="TF_Suites" Relationship="Self.FK_TF_TestCases_TF_Suites" FromRole="TF_TestCases" ToRole="TF_Suites" />
+          <Property Name="External_Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TF_TestPlan">
+          <Key>
+            <PropertyRef Name="TestPlan_Id" />
+          </Key>
+          <Property Name="TestPlan_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Project_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TF_Projects" Relationship="Self.FK_TF_TestPlan_TF_Projects" FromRole="TF_TestPlan" ToRole="TF_Projects" />
+          <NavigationProperty Name="TF_Suites" Relationship="Self.FK_TF_Suites_TF_TestPlan" FromRole="TF_TestPlan" ToRole="TF_Suites" />
+          <Property Name="External_Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TF_User">
+          <Key>
+            <PropertyRef Name="User_Id" />
+          </Key>
+          <Property Name="User_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TF_User_Permissions">
+          <Key>
+            <PropertyRef Name="Permission_Id" />
+          </Key>
+          <Property Name="Permission_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Id" Type="Int32" Nullable="false" />
+          <Property Name="Collection_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TF_Collections" Relationship="Self.FK_TF_User_Permissions_TF_Collections" FromRole="TF_User_Permissions" ToRole="TF_Collections" />
+        </EntityType>
+        <Association Name="FK_TF_Case_Metrics_TF_TestCases">
+          <End Role="TF_TestCases" Type="Self.TF_TestCases" Multiplicity="1" />
+          <End Role="TF_Case_Metrics" Type="Self.TF_Case_Metrics" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TF_TestCases">
+              <PropertyRef Name="TestCase_Id" />
+            </Principal>
+            <Dependent Role="TF_Case_Metrics">
+              <PropertyRef Name="Metrics_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TF_Collections_TF_Collection_Types">
+          <End Role="TF_Collection_Types" Type="Self.TF_Collection_Types" Multiplicity="1" />
+          <End Role="TF_Collections" Type="Self.TF_Collections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TF_Collection_Types">
+              <PropertyRef Name="Type_Id" />
+            </Principal>
+            <Dependent Role="TF_Collections">
+              <PropertyRef Name="Type_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TF_Projects_TF_Collections">
+          <End Role="TF_Collections" Type="Self.TF_Collections" Multiplicity="1" />
+          <End Role="TF_Projects" Type="Self.TF_Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TF_Collections">
+              <PropertyRef Name="Collection_Id" />
+            </Principal>
+            <Dependent Role="TF_Projects">
+              <PropertyRef Name="Collection_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TF_User_Permissions_TF_Collections">
+          <End Role="TF_Collections" Type="Self.TF_Collections" Multiplicity="1" />
+          <End Role="TF_User_Permissions" Type="Self.TF_User_Permissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TF_Collections">
+              <PropertyRef Name="Collection_Id" />
+            </Principal>
+            <Dependent Role="TF_User_Permissions">
+              <PropertyRef Name="Collection_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TF_TestPlan_TF_Projects">
+          <End Role="TF_Projects" Type="Self.TF_Projects" Multiplicity="1" />
+          <End Role="TF_TestPlan" Type="Self.TF_TestPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TF_Projects">
+              <PropertyRef Name="Project_Id" />
+            </Principal>
+            <Dependent Role="TF_TestPlan">
+              <PropertyRef Name="Project_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TF_Step_TF_TestCases">
+          <End Role="TF_TestCases" Type="Self.TF_TestCases" Multiplicity="1" />
+          <End Role="TF_Step" Type="Self.TF_Step" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TF_TestCases">
+              <PropertyRef Name="TestCase_Id" />
+            </Principal>
+            <Dependent Role="TF_Step">
+              <PropertyRef Name="TestCase_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TF_Suites_TF_TestPlan">
+          <End Role="TF_TestPlan" Type="Self.TF_TestPlan" Multiplicity="1" />
+          <End Role="TF_Suites" Type="Self.TF_Suites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TF_TestPlan">
+              <PropertyRef Name="TestPlan_Id" />
+            </Principal>
+            <Dependent Role="TF_Suites">
+              <PropertyRef Name="TestPlan_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TF_TestCases_TF_Suites">
+          <End Role="TF_Suites" Type="Self.TF_Suites" Multiplicity="1" />
+          <End Role="TF_TestCases" Type="Self.TF_TestCases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TF_Suites">
+              <PropertyRef Name="Suite_Id" />
+            </Principal>
+            <Dependent Role="TF_TestCases">
+              <PropertyRef Name="Suite_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="testflowEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TF_Case_Metrics" EntityType="Self.TF_Case_Metrics" />
+          <EntitySet Name="TF_Collection_Types" EntityType="Self.TF_Collection_Types" />
+          <EntitySet Name="TF_Collections" EntityType="Self.TF_Collections" />
+          <EntitySet Name="TF_Projects" EntityType="Self.TF_Projects" />
+          <EntitySet Name="TF_Step" EntityType="Self.TF_Step" />
+          <EntitySet Name="TF_Suites" EntityType="Self.TF_Suites" />
+          <EntitySet Name="TF_TestCases" EntityType="Self.TF_TestCases" />
+          <EntitySet Name="TF_TestPlan" EntityType="Self.TF_TestPlan" />
+          <EntitySet Name="TF_User" EntityType="Self.TF_User" />
+          <EntitySet Name="TF_User_Permissions" EntityType="Self.TF_User_Permissions" />
+          <AssociationSet Name="FK_TF_Case_Metrics_TF_TestCases" Association="Self.FK_TF_Case_Metrics_TF_TestCases">
+            <End Role="TF_TestCases" EntitySet="TF_TestCases" />
+            <End Role="TF_Case_Metrics" EntitySet="TF_Case_Metrics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TF_Collections_TF_Collection_Types" Association="Self.FK_TF_Collections_TF_Collection_Types">
+            <End Role="TF_Collection_Types" EntitySet="TF_Collection_Types" />
+            <End Role="TF_Collections" EntitySet="TF_Collections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TF_Projects_TF_Collections" Association="Self.FK_TF_Projects_TF_Collections">
+            <End Role="TF_Collections" EntitySet="TF_Collections" />
+            <End Role="TF_Projects" EntitySet="TF_Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TF_User_Permissions_TF_Collections" Association="Self.FK_TF_User_Permissions_TF_Collections">
+            <End Role="TF_Collections" EntitySet="TF_Collections" />
+            <End Role="TF_User_Permissions" EntitySet="TF_User_Permissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TF_TestPlan_TF_Projects" Association="Self.FK_TF_TestPlan_TF_Projects">
+            <End Role="TF_Projects" EntitySet="TF_Projects" />
+            <End Role="TF_TestPlan" EntitySet="TF_TestPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TF_Step_TF_TestCases" Association="Self.FK_TF_Step_TF_TestCases">
+            <End Role="TF_TestCases" EntitySet="TF_TestCases" />
+            <End Role="TF_Step" EntitySet="TF_Step" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TF_Suites_TF_TestPlan" Association="Self.FK_TF_Suites_TF_TestPlan">
+            <End Role="TF_TestPlan" EntitySet="TF_TestPlan" />
+            <End Role="TF_Suites" EntitySet="TF_Suites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TF_TestCases_TF_Suites" Association="Self.FK_TF_TestCases_TF_Suites">
+            <End Role="TF_Suites" EntitySet="TF_Suites" />
+            <End Role="TF_TestCases" EntitySet="TF_TestCases" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="testflowModelStoreContainer" CdmEntityContainer="testflowEntities">
+          <EntitySetMapping Name="TF_Case_Metrics">
+            <EntityTypeMapping TypeName="testflowModel.TF_Case_Metrics">
+              <MappingFragment StoreEntitySet="TF_Case_Metrics">
+                <ScalarProperty Name="Metrics_Id" ColumnName="Metrics_Id" />
+                <ScalarProperty Name="TestCase_Id" ColumnName="TestCase_Id" />
+                <ScalarProperty Name="Metrics_Desc" ColumnName="Metrics_Desc" />
+                <ScalarProperty Name="Failed" ColumnName="Failed" />
+                <ScalarProperty Name="Fail_Cause" ColumnName="Fail_Cause" />
+                <ScalarProperty Name="Update_Date" ColumnName="Update_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TF_Collection_Types">
+            <EntityTypeMapping TypeName="testflowModel.TF_Collection_Types">
+              <MappingFragment StoreEntitySet="TF_Collection_Types">
+                <ScalarProperty Name="Type_Id" ColumnName="Type_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TF_Collections">
+            <EntityTypeMapping TypeName="testflowModel.TF_Collections">
+              <MappingFragment StoreEntitySet="TF_Collections">
+                <ScalarProperty Name="Collection_Id" ColumnName="Collection_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+                <ScalarProperty Name="Type_Id" ColumnName="Type_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TF_Projects">
+            <EntityTypeMapping TypeName="testflowModel.TF_Projects">
+              <MappingFragment StoreEntitySet="TF_Projects">
+                <ScalarProperty Name="External_Id" ColumnName="External_Id" />
+                <ScalarProperty Name="Project_Id" ColumnName="Project_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Collection_Id" ColumnName="Collection_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TF_Step">
+            <EntityTypeMapping TypeName="testflowModel.TF_Step">
+              <MappingFragment StoreEntitySet="TF_Step">
+                <ScalarProperty Name="Parent_External_Id" ColumnName="Parent_External_Id" />
+                <ScalarProperty Name="External_Id" ColumnName="External_Id" />
+                <ScalarProperty Name="Step_Id" ColumnName="Step_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Results" ColumnName="Results" />
+                <ScalarProperty Name="Parent" ColumnName="Parent" />
+                <ScalarProperty Name="TestCase_Id" ColumnName="TestCase_Id" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TF_Suites">
+            <EntityTypeMapping TypeName="testflowModel.TF_Suites">
+              <MappingFragment StoreEntitySet="TF_Suites">
+                <ScalarProperty Name="Parent_External_Id" ColumnName="Parent_External_Id" />
+                <ScalarProperty Name="External_Id" ColumnName="External_Id" />
+                <ScalarProperty Name="Suite_Id" ColumnName="Suite_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+                <ScalarProperty Name="TestPlan_Id" ColumnName="TestPlan_Id" />
+                <ScalarProperty Name="Parent" ColumnName="Parent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TF_TestCases">
+            <EntityTypeMapping TypeName="testflowModel.TF_TestCases">
+              <MappingFragment StoreEntitySet="TF_TestCases">
+                <ScalarProperty Name="External_Id" ColumnName="External_Id" />
+                <ScalarProperty Name="TestCase_Id" ColumnName="TestCase_Id" />
+                <ScalarProperty Name="Suite_Id" ColumnName="Suite_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LastModifiedBy" ColumnName="LastModifiedBy" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Modified" ColumnName="Modified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TF_TestPlan">
+            <EntityTypeMapping TypeName="testflowModel.TF_TestPlan">
+              <MappingFragment StoreEntitySet="TF_TestPlan">
+                <ScalarProperty Name="External_Id" ColumnName="External_Id" />
+                <ScalarProperty Name="TestPlan_Id" ColumnName="TestPlan_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Project_Id" ColumnName="Project_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TF_User">
+            <EntityTypeMapping TypeName="testflowModel.TF_User">
+              <MappingFragment StoreEntitySet="TF_User">
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TF_User_Permissions">
+            <EntityTypeMapping TypeName="testflowModel.TF_User_Permissions">
+              <MappingFragment StoreEntitySet="TF_User_Permissions">
+                <ScalarProperty Name="Permission_Id" ColumnName="Permission_Id" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="Collection_Id" ColumnName="Collection_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

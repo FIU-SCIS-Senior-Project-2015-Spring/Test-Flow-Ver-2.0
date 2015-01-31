@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="IIS Web Application Name" value="TestFlow" />
+  <setParameter name="testflowConnectionString-Web.config Connection String" value="Data Source=JUSTIN-DESKTOP\SQLEXPRESS;Initial Catalog=testflow;User ID=test;Password=test123" />
+  <setParameter name="testflowEntities-Web.config Connection String" value="metadata=res://*/EntityData.TestFlowModel.csdl|res://*/EntityData.TestFlowModel.ssdl|res://*/EntityData.TestFlowModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=JUSTIN-DESKTOP\SQLEXPRESS;initial catalog=testflow;user id=test;password=test123;multipleactiveresultsets=True;application name=EntityFramework&quot;" />
+</parameters>

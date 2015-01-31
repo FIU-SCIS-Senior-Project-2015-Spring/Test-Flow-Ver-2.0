@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DataStore.Adapters.TestFlow.Composites.TestFlowCompositeBase">
+    <Position X="5" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Adapters\TestFlow\Composites\TestFlowCompositeBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataStore.Adapters.TestFlow.Composites.TestFlowProjectHelper">
+    <Position X="5" Y="9" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAhAAEAAAAAAAAAAAEACAgAAAAAAAAA=</HashCode>
+      <FileName>Adapters\TestFlow\Composites\TestFlowProjectHelper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataStore.Adapters.TestFlow.Composites.TestFlowStepHelper">
+    <Position X="7.25" Y="9" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAEAAAAAAAAAAAGACAAAAABAAAAA=</HashCode>
+      <FileName>Adapters\TestFlow\Composites\TestFlowStepHelper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataStore.Adapters.TestFlow.Composites.TestFlowSuiteHelper">
+    <Position X="9.5" Y="9" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAABAAEAAAAAAAAAAAEACAAAAAAgAAAA=</HashCode>
+      <FileName>Adapters\TestFlow\Composites\TestFlowSuiteHelper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataStore.Adapters.TestFlow.Composites.TestFlowTestCaseHelper">
+    <Position X="0.5" Y="9" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAABAAEAAAAAAAAAAAEACAAAAAAAAAAA=</HashCode>
+      <FileName>Adapters\TestFlow\Composites\TestFlowTestCaseHelper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataStore.Adapters.TestFlow.Composites.TestFlowTestPlanHelper">
+    <Position X="2.75" Y="9" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAEAAAAAAAAAAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Adapters\TestFlow\Composites\TestFlowTestPlanHelper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataStore.Adapters.TestFlow.TestFlowManager">
+    <Position X="13" Y="9.5" Width="2" />
+    <AssociationLine Name="projectsHelper" Type="DataStore.Adapters.TestFlow.Composites.TestFlowProjectHelper" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13" Y="12.062" />
+        <Point X="6" Y="12.062" />
+        <Point X="6" Y="11.387" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="stepHelper" Type="DataStore.Adapters.TestFlow.Composites.TestFlowStepHelper" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13" Y="11.875" />
+        <Point X="8.25" Y="11.875" />
+        <Point X="8.25" Y="11.387" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="testCaseHelper" Type="DataStore.Adapters.TestFlow.Composites.TestFlowTestCaseHelper" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13" Y="12.875" />
+        <Point X="1.5" Y="12.875" />
+        <Point X="1.5" Y="11.194" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="testPlanHelper" Type="DataStore.Adapters.TestFlow.Composites.TestFlowTestPlanHelper" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13" Y="12.5" />
+        <Point X="3.75" Y="12.5" />
+        <Point X="3.75" Y="11.194" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAADACAAAAAAAAAAAAAAABQAAAQAGAAAwAAkAAAAAQA=</HashCode>
+      <FileName>Adapters\TestFlow\TestFlowManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="projectsHelper" />
+      <Field Name="stepHelper" />
+      <Field Name="suiteHelper" />
+      <Field Name="testCaseHelper" />
+      <Field Name="testPlanHelper" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.1" />
+  </Class>
+  <Class Name="DataStore.Adapters.Tfs.Composites.TfsCompositeBase">
+    <Position X="5" Y="13.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Adapters\Tfs\Composites\TfsCompositeBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataStore.Adapters.Tfs.Composites.TfsProjectHelper">
+    <Position X="9.5" Y="16" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAEAAAAAAAAAAAEACAAAABAAAAAA=</HashCode>
+      <FileName>Adapters\Tfs\Composites\TfsProjectHelper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataStore.Adapters.Tfs.Composites.TfsStepHelper">
+    <Position X="0.5" Y="16" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAEAAAAAAAAAAAEACABAAAAAAAAA=</HashCode>
+      <FileName>Adapters\Tfs\Composites\TfsStepHelper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataStore.Adapters.Tfs.Composites.TfsSuiteHelper">
+    <Position X="2.75" Y="16" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAABAAEAABAAAAAAAAEAKAAAAAAAAAAA=</HashCode>
+      <FileName>Adapters\Tfs\Composites\TfsSuiteHelper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataStore.Adapters.Tfs.Composites.TfsTestCaseHelper">
+    <Position X="5" Y="16" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAEAABAAAAAAAAEAKAAAAAAAAAAA=</HashCode>
+      <FileName>Adapters\Tfs\Composites\TfsTestCaseHelper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataStore.Adapters.Tfs.Composites.TfsTestPlanHelper">
+    <Position X="7.25" Y="16" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAEAAAAAAAAAAAEACAAAAAAAAAAA=</HashCode>
+      <FileName>Adapters\Tfs\Composites\TfsTestPlanHelper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataStore.Adapters.Tfs.TfsManager">
+    <Position X="13" Y="18.25" Width="2" />
+    <AssociationLine Name="projectsHelper" Type="DataStore.Adapters.Tfs.Composites.TfsProjectHelper" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13" Y="19.188" />
+        <Point X="10.5" Y="19.188" />
+        <Point X="10.5" Y="18.454" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="stepHelper" Type="DataStore.Adapters.Tfs.Composites.TfsStepHelper" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13" Y="21.812" />
+        <Point X="1.5" Y="21.812" />
+        <Point X="1.5" Y="18.454" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="suiteHelper" Type="DataStore.Adapters.Tfs.Composites.TfsSuiteHelper" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13" Y="21" />
+        <Point X="3.75" Y="21" />
+        <Point X="3.75" Y="18.838" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="testCaseHelper" Type="DataStore.Adapters.Tfs.Composites.TfsTestCaseHelper" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13" Y="20.125" />
+        <Point X="6" Y="20.125" />
+        <Point X="6" Y="18.646" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAADACAAAAAAAAAAAAAAAhwAAAQAGAAAxQAkAAAAAQA=</HashCode>
+      <FileName>Adapters\Tfs\TfsManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="projectsHelper" />
+      <Field Name="stepHelper" />
+      <Field Name="suiteHelper" />
+      <Field Name="testCaseHelper" />
+      <Field Name="testPlanHelper" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataStore.CollectionHelper">
+    <Position X="18" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAgAQAAAAAAAAIAAAAAAAAAAAAAAAEAAAAE=</HashCode>
+      <FileName>CollectionHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConfigurationStore">
+    <Position X="20" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>ConfigurationStore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataManagerFacade">
+    <Position X="20" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABABCAAIIAAFBIAAAAAAAAAAAAAiAAAIAggAABEAAAA=</HashCode>
+      <FileName>DataManagerFacade.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="dataStores" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DataStore.SyncStores.SyncManager">
+    <Position X="20" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAABAAAAAAAACAAAAAAAAQAAgAAA=</HashCode>
+      <FileName>SyncStores\SyncManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="UserCollections">
+    <Position X="16.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConfigurationStore.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="collection" />
+      <Field Name="tfStore" />
+    </ShowAsAssociation>
+  </Struct>
+  <Interface Name="DataStore.Adapters.Composites.IProjectHelper" Collapsed="true">
+    <Position X="0.5" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Adapters\Composites\IProjectHelper.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DataStore.Adapters.Composites.IStepHelper" Collapsed="true">
+    <Position X="5" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Adapters\Composites\IStepHelper.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DataStore.Adapters.Composites.ISuiteHelper" Collapsed="true">
+    <Position X="7.25" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Adapters\Composites\ISuiteHelper.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DataStore.Adapters.Composites.ITestCaseHelper" Collapsed="true">
+    <Position X="9.5" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Adapters\Composites\ITestCaseHelper.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DataStore.Adapters.Composites.ITestItemComposite&lt;T&gt;">
+    <Position X="5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAEAAAAAAAAAAAEACAAAAAAAAAAA=</HashCode>
+      <FileName>Adapters\Composites\ITestItemComposite.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DataStore.Adapters.Composites.ITestPlanHelper" Collapsed="true">
+    <Position X="2.75" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Adapters\Composites\ITestPlanHelper.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DataStore.Adapters.IDataStoreAdapter">
+    <Position X="13.25" Y="4.5" Width="1.5" />
+    <AssociationLine Name="Projects" Type="DataStore.Adapters.Composites.IProjectHelper" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13.25" Y="6.125" />
+        <Point X="1.5" Y="6.125" />
+        <Point X="1.5" Y="3.691" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Suites" Type="DataStore.Adapters.Composites.ISuiteHelper" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13.25" Y="4.687" />
+        <Point X="8.781" Y="4.687" />
+        <Point X="8.781" Y="3.691" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="TestPlans" Type="DataStore.Adapters.Composites.ITestPlanHelper" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13.25" Y="5.688" />
+        <Point X="3.75" Y="5.688" />
+        <Point X="3.75" Y="3.691" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Steps" Type="DataStore.Adapters.Composites.IStepHelper" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13.25" Y="5.125" />
+        <Point X="6" Y="5.125" />
+        <Point X="6" Y="3.691" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAADACAAAAAAAAAAAAAAAAQAAAQAGAAAAAAgAAAAAQA=</HashCode>
+      <FileName>Adapters\IDataStoreAdapter.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Projects" />
+      <Property Name="TestCases" />
+      <Property Name="Suites" />
+      <Property Name="TestPlans" />
+      <Property Name="Steps" />
+    </ShowAsAssociation>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
