@@ -1,0 +1,65 @@
+<h3>{{ testPlan }} </h3>
+<div class="drag-container data-drag" data-drag="suiteDrag">
+  <ul class="nav nav-pills nav-stacked suite-bar top-tier">
+    <li class="clearfix cf">
+      <p>
+        <span class="controls">
+          <span class="tree-span">····</span>
+          <span class="glyphicon glyphicon-plus onlyHover hoverable" ng-click="addSuite()"></span>
+        </span>
+        <input type="text" class="form-control" id="newSuiteText" placeholder="Type new suite name here..." />
+      </p>
+    </li>
+    <li ng-repeat-start="test in entries" class="no-show{{isFirst($index,' droppable ')}}" tf-drop="0" data-drag="suiteDrag">&nbsp;</li>
+    <li class="{{isActive(test.id)}} clearfix cf test-suite" tf-draggable id="suite{{$index}}" data-parent="-1" data-root="-1"  draggable="true">
+      <div class="{{ isSuiteToggle(test) }}">
+      <p>
+        <span class="controls">
+          <span class="tree-span">····</span>
+          <span class="glyphicon glyphicon-chevron-{{ isSuiteToggle(test) }} hoverable" ng-click="toggleSuite(test)" data-toggle="tooltip" data-placement="bottom"  
+    title="Show / hide suite children" tf-tooltip></span>
+          <span class="glyphicon glyphicon-plus onlyHover hoverable" ng-click="addSuite('', $index)" data-toggle="tooltip" data-placement="bottom"  
+    title="Add nested suite" tf-tooltip></span>
+        </span>
+        <span ng-click="makeActive($index)" class="suite-name"> <span ng-if="test.attributes.changed && !test.attributes.new" data-toggle="tooltip" data-placement="bottom"
+      title="Suite has changed from original test plan." class="glyphicon glyphicon-exclamation-sign yellow" tf-tooltip></span><span ng-if="test.attributes.new" data-toggle="tooltip" data-placement="bottom"
+      title="Suite does not exist in test plan yet." class="glyphicon glyphicon-plus-sign blue" tf-tooltip></span> {{ test.name }} ({{ test.suites.length }})</span>
+      </p>
+      <ul class="nav nav-pills nav-stacked suite-bar">
+          <li class="{{isActive(aTest.id)}}" ng-repeat="aTest in test.suites">
+              <div class="{{ isSuiteToggle(aTest) }}">
+                  <p>
+                      <span class="controls">
+                          <span class="tree-span">····</span>
+                          <span class="glyphicon glyphicon-chevron-{{ isSuiteToggle(aTest) }} hoverable" ng-click="toggleSuite(aTest)"></span>
+                          <span class="glyphicon glyphicon-plus onlyHover hoverable" ng-click="addSuite('', $index, $parent.$index)"></span>
+                      </span>
+                      <span ng-click="makeActive($index, $parent.$index)" class="suite-name">
+                          <span ng-if="aTest.attributes.changed && !aTest.attributes.new" data-toggle="tooltip" data-placement="bottom"
+                                title="Suite has changed from original test plan." class="glyphicon glyphicon-exclamation-sign yellow" tf-tooltip></span>
+                          <span ng-if="aTest.attributes.new" data-toggle="tooltip" data-placement="bottom" title="Suite does not exist in test plan yet." class="glyphicon glyphicon-plus-sign blue" tf-tooltip></span>
+                          {{ aTest.name }} ({{ aTest.suites.length }})
+                      </span>
+                  </p>
+                  <ul class="nav nav-pills nav-stacked suite-bar">
+                      <li class="{{isActive(bTest.id)}}" ng-repeat="bTest in aTest.suites">
+                          <p>
+                              <span class="controls">
+                                  <span class="tree-span">····</span>
+                              </span>
+                              <span ng-click="makeActive($index, $parent.$index, $parent.$parent.$index)" class="suite-name">
+                                  <span ng-if="bTest.attributes.changed && !bTest.attributes.new" data-toggle="tooltip" data-placement="bottom"
+                                        title="Suite has changed from original test plan." class="glyphicon glyphicon-exclamation-sign yellow" tf-tooltip></span><span ng-if="bTest.attributes.new" data-toggle="tooltip" data-placement="bottom"
+                                                                                                                                                                       title="Suite does not exist in test plan yet." class="glyphicon glyphicon-plus-sign blue" tf-tooltip></span> {{ bTest.name }}
+                              </span>
+                          </p>
+                      </li>
+                  </ul>
+              </div>
+          </li>
+      </ul>
+      </div>
+    </li>
+    <li ng-repeat-end class="droppable" tf-drop="{{$index + 1}}" data-drag="suiteDrag"></li>
+  </ul>
+</div>

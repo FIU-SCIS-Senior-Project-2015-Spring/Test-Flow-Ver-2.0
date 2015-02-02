@@ -1,0 +1,46 @@
+<div ng-repeat="case in suite.children track by $index | filter:$parent.search_box" tf-reversezorder> <!-- loop of the cases -->
+  <div ng-if="$index == 0" class="droppable" tf-drop="0" data-drag="caseDrag">&nbsp;</div>
+  <div class="{{ case.type }} arch fadeInUp animated test-case {{ toggleClass($index) }}">
+    <div class="input-group test-case test-case-drag input-group{{ case.size }}" id="case{{$index}}" draggable="true" tf-draggable>
+      <span class="input-group-addon">
+        <span class="glyphicon {{ toggleButton($index) }}" data-placement="bottom"
+    title="Show / hide test case" ng-click="toggle($index)" tf-tooltip></span>
+        <span class="glyphicon glyphicon-plus onlyHover" data-toggle="tooltip" data-placement="bottom"
+    title="Create step" ng-click="addStepClicked($index)" tf-tooltip></span>
+          <span class="glyphicon glyphicon-remove onlyHover" data-toggle="tooltip" data-placement="bottom"
+                title="Delete test case" ng-click="removeCaseEntryClicked($parent.$index)" ng-if="case.attributes.new" tf-tooltip></span>
+        <span class="id">
+          <strong>ID: </strong> TestCase{{case.id}}
+        </span>
+        <span ng-if="case.attributes.changed && !case.attributes.new" data-toggle="tooltip" data-placement="bottom"
+                title="Test case has changed from original test plan." class="glyphicon glyphicon-exclamation-sign yellow" tf-tooltip></span>
+        <span ng-if="case.attributes.new" data-toggle="tooltip" data-placement="bottom" title="Test case does not exist in test plan yet." class="glyphicon glyphicon-plus-sign blue" tf-tooltip></span> 
+      </span>
+        <input type="text" id="c{{ case.id }}" e-type="case" entry="{{ $index }}" last="{{ suite.children.length - 1}}" class="form-control tf-proc-control edit-title" ng-model="case.name" tf-processkey="edit-title" ng-change="changed(case)">
+    </div><!-- /input-group -->
+    <div class="case-data">
+      <div id="case-body{{ case.id }}" class="animation case-body">
+          <div ng-include="'/AngularViews/Composites/step_view_control.html'" class="data-drag drag-container" data-drag="stepDrag"></div>
+      </div>
+      <div class="item-summary {{ toggleDetailsClass($index) }}">
+        <div class="clearfix cf details">
+          <a class="btn btn-default btn-sm pull-right" ng-click="toggleDetails($index)"><span class="glyphicon {{ toggleDetailsButton($index) }}"></span> Details</a>
+        </div>
+        <text-angular name="richEditor{{$index}}" ng-model="case.summary" ta-disabled='disabled' placeholder='Placeholder Text' ta-default-wrap="p">
+        </text-angular>
+        <p>
+          Testers: John, Jane&nbsp;&nbsp;&nbsp;State: null&nbsp;&nbsp;&nbsp; 
+          <button class="btn btn-default pull-right" popover-placement="top" tooltip="Dismissible popover" popover="Meta data and functionality will go here." ng-click="getMetrics($index)"><span class="glyphicon glyphicon-signal"></span> Metrics</button> 
+          <button class="btn btn-default pull-right" popover-placement="top" tooltip="Dismissible popover" popover="Meta data and functionality will go here." popover-trigger="click" ng-click="runAutomation($index)"><span class="glyphicon glyphicon-send"></span> Run Automation </button> 
+          <button class="btn btn-default pull-right" popover-placement="top" tooltip="Dismissible popover" popover="Meta data and functionality will go here."><span class="glyphicon glyphicon-link"></span> Links (0)</button> 
+          <button class="btn btn-default pull-right" popover-placement="top" tooltip="Dismissible popover" popover="Meta data and functionality will go here." popover-trigger="click" ng-click="getAttachements($index)"><span class="glyphicon glyphicon-paperclip"></span> Attachments (0)</button>
+        </p>
+        <p>
+          <input type="text" class="no-block form-control" placeholder="New tag name...">
+          <span class="label label-default pull-right">Tag 1</span> <span class="label label-default pull-right">Tag 3</span> <span class="label label-default pull-right">Tag 2</span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="droppable" tf-drop="{{$index + 1}}" data-drag="caseDrag">&nbsp;</div>
+</div>

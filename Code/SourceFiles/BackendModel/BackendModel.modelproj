@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{51ae43b4-4867-4a7e-8d21-b6a8a4eed7fd}</ProjectGuid>
+    <ArchitectureToolsVersion>2.0.0.0</ArchitectureToolsVersion>
+    <Name>BackendModel</Name>
+    <RootNamespace>BackendModel</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="'$(VSToolsPath)' != ''" />
+  <ItemGroup>
+    <Content Include="AddElementSequenceDiagram.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="AddElementSequenceDiagram.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>AddElementSequenceDiagram.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="EditItemSequenceDiagram.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="EditItemSequenceDiagram.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>EditItemSequenceDiagram.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="GetProjectsSequenceDiagram.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="GetProjectsSequenceDiagram.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>GetProjectsSequenceDiagram.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="GetUserConfigurationSequenceDiagram.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="GetUserConfigurationSequenceDiagram.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>GetUserConfigurationSequenceDiagram.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="UMLClassDiagramDataStore.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UMLClassDiagramDataStore.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UMLClassDiagramDataStore.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="UMLClassDiagramFileStore.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UMLClassDiagramFileStore.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UMLClassDiagramFileStore.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="UMLClassDiagramRepository.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UMLClassDiagramRepository.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UMLClassDiagramRepository.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="UMLClassDiagramServiceFacade.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UMLClassDiagramServiceFacade.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UMLClassDiagramServiceFacade.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="UMLClassDiagramTestCaseModel.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UMLClassDiagramTestCaseModel.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UMLClassDiagramTestCaseModel.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="UploadFileSequenceDiagram.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UploadFileSequenceDiagram.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>UploadFileSequenceDiagram.sequencediagram</DependentUpon>
+    </Content>
+    <Folder Include="ModelDefinition\" />
+    <Content Include="ModelDefinition\BackendModel.uml">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+</Project>

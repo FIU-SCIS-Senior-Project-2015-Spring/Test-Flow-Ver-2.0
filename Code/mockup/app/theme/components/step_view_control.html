@@ -1,0 +1,30 @@
+<div ng-repeat="step in case.children track by $index | filter:$parent.search_box"> <!-- loop of the cases -->
+  <div ng-if="$index == 0" class="droppable" tf-drop="0" data-drag="stepDrag">&nbsp;</div>
+  <div class="{{ step.type }} arch suite-master test-step fadeInUp animated" id="step{{$index}}" parent="{{$parent.$index}}" draggable="true"  tf-draggable>
+    <div class="input-group input-group{{ step.size }}">
+      <span class="input-group-addon">
+        {{$index + 1}}.&nbsp; 
+        <span class="glyphicon glyphicon-remove onlyHover" data-toggle="tooltip" data-placement="bottom"  
+    title="Delete step" ng-click="removeStepEntryClicked($parent.$index, $index)" tf-tooltip></span>
+      </span>
+      <div class="form-inline">
+        <div class="form-group step-title">  
+          <input type="text" id="st{{ step.id }}" e-type="step" entry="{{ $parent.$index }}" step-entry="{{ $index }}" last="{{ case.children.length - 1 }}" class="form-control tf-proc-control edit-title" ng-model="step.name" placeholder="Step description..." tf-processkey="edit-title">
+        </div>
+        <div class="form-group step-result">
+          <input type="text" id="str{{ step.id }}" e-type="step" entry="{{ $parent.$index }}" step-entry="{{ $index }}" last="{{ case.children.length - 1 }}" class="form-control tf-proc-control edit-result" ng-model="step.result" placeholder="{{getPlaceHolder($parent.$index, $index, 'Expected result...')}}" tf-processkey="edit-result">
+        </div>
+      </div>
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-ok-sign green"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span></button>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+          <li><a href="#">{{ resc.filesRmv }}</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Copy Children</a></li>
+          <li><a href="#">Link File</a></li>
+        </ul>
+      </div><!-- /btn-group -->
+    </div><!-- /input-group -->
+  </div>
+  <div class="droppable" tf-drop="{{$index + 1}}" data-drag="stepDrag">&nbsp;</div>
+</div>

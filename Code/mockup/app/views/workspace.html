@@ -1,0 +1,62 @@
+<div class="row MainBody">
+        <div class="col-md-3 leftPaneWrapper">
+          <div id="LeftPane" class="fadeInLeft animated ">
+            <div ng-include src="'theme/components/suite_bar.html'">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9 fadeIn animated">
+          <div class="row heading">
+            <div class="col-md-5">
+              <div class="input-group search">
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Context <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="#">Suite</a></li>
+                      <li><a href="#">Global</a></li>
+                    </ul>
+                </div><!-- /btn-group -->
+                <input type="text" class="form-control" ng-model="search_box" placeholder="Search...">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+              </div><!-- /input-group -->
+            </div>
+            <div class="col-md-7">
+            <ul class="nav nav-pills pull-right fadeInDown animated">
+              <li>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;&nbsp;View</button>
+                  <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;&nbsp;Edit</button>
+                </div>
+              </li>
+              <li><button class="btn btn-primary commit"><span class="glyphicon glyphicon-repeat"></span> Sync</button></li>
+              <li>
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                      <span class="glyphicon glyphicon-cog"></span> Configure Test Plan
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Hosts</a></li>
+                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Repositories</a></li>
+                    </ul>
+                  </div>
+              </li>
+            </ul>
+            </div>
+          </div>
+    <div id="workspace">
+      <div ng-include src="'theme/components/suite_view_control.html'"></div>
+    <button class="btn btn-default" ng-click="clearStorage()">Clear Storage</button>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+          <div class="footer fadeInUp animated">
+
+            <p><a href="http://cis.fiu.edu/" target="_blank">FIU SCIS</a> Senior Project Test Case Management for <a href="http://www.ultimatesoftware.com/" target="_blank">Ultimate Software</a></p>
+          </div>
+          </div>
+      </div>
+        </div>
+      </div>
