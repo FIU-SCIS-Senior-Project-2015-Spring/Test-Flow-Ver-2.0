@@ -16,3 +16,8 @@ G:\udocdownloads\docs\GitHub\Test-Case\Code\SourceFiles\FileStore\bin\Debug\File
 G:\udocdownloads\docs\GitHub\Test-Case\Code\SourceFiles\FileStore\bin\Debug\FileStore.pdb
 G:\udocdownloads\docs\GitHub\Test-Case\Code\SourceFiles\FileStore\obj\Debug\FileStore.dll
 G:\udocdownloads\docs\GitHub\Test-Case\Code\SourceFiles\FileStore\obj\Debug\FileStore.pdb
+C:\Users\ART\Documents\GitHub\Test-Flow-Ver-2.0\Code\SourceFiles\FileStore\bin\Debug\FileStore.dll
+C:\Users\ART\Documents\GitHub\Test-Flow-Ver-2.0\Code\SourceFiles\FileStore\bin\Debug\FileStore.pdb
+C:\Users\ART\Documents\GitHub\Test-Flow-Ver-2.0\Code\SourceFiles\FileStore\obj\Debug\FileStore.csprojResolveAssemblyReference.cache
+C:\Users\ART\Documents\GitHub\Test-Flow-Ver-2.0\Code\SourceFiles\FileStore\obj\Debug\FileStore.dll
+C:\Users\ART\Documents\GitHub\Test-Flow-Ver-2.0\Code\SourceFiles\FileStore\obj\Debug\FileStore.pdb
