@@ -147,7 +147,9 @@
     <Compile Include="SyncStores\TestFlowManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="ClassDiagramDataStore.cd" />
     <EntityDeploy Include="EntityData\TestFlowModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -166,7 +168,9 @@
       <DependentUpon>TestFlowModel.edmx</DependentUpon>
       <LastGenOutput>TestFlowModel.cs</LastGenOutput>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TestCaseModel\TestCaseModel.csproj">

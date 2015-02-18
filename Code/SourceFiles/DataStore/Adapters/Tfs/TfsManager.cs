@@ -58,13 +58,14 @@ namespace DataStore.Adapters.Tfs
         public TfsManager(Uri host)
         {
             Host = host;
-            credentials = new NetworkCredential("TFS", "test123"); //CredentialCache.DefaultNetworkCredentials only works using digest;
+            //credentials = new NetworkCredential("TFS", "test123"); 
+            //credentials = CredentialCache.DefaultNetworkCredentials; //only works using digest;
 
             teamProjectCollection = TfsTeamProjectCollectionFactory.GetTeamProjectCollection(Host);
-            //ICredentials crds = new NetworkCredential("TFS", "test123");
+            ICredentials credentials = new NetworkCredential("TFS", "test123");
             teamProjectCollection.Credentials = credentials;
 
-            TfsTeamProjectCollection tfsCollection = new TfsTeamProjectCollection(Host, credentials);
+            TfsTeamProjectCollection tfsCollection = new TfsTeamProjectCollection(Host, credentials); 
             testManagementService = teamProjectCollection.GetService<ITestManagementService>();
 
             projectsHelper = new TfsProjectHelper(testManagementService, teamProjectCollection, "");

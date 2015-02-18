@@ -668,8 +668,6 @@ angular.module('initProjApp').controller('WorkspaceCtrl', function ($scope, stor
 							}
 				}
 
-
-
         var reqD = {
  					method: 'DELETE',
  					url: 'http://localhost:3579/api/run',
