@@ -513,83 +513,61 @@ angular.module('initProjApp').controller('WorkspaceCtrl', function ($scope, stor
 		return size;
 	};
 
-	$scope.getMetrics = function(index) {
-
-		
+	$scope.getMetrics = function(index) {		
 		var url = "http://localhost:3579/api/results" ; //This URL is from the Phoenix API's default localhost
-														//Start The API .EXE file before attempting to run Requests 
-
+														//Start The API .EXE file before attempting to run Requests
 		var config = {
-            params: {
-             
+            params: {             
                 format: "json",
               //  rvlimit: 50,
-                file: "test1",//works,
-               
+                file: "test1",//works,               
                 callback: "JSON_CALLBACK"    
             }           
-        };
+		};
 
-        
-        $http.jsonp(url, config).success(function(data){
-            
-            
+        $http.jsonp(url, config).success(function(data){            
             console.log(data);
-            
- 
-	//alert(data.results[0].passed);
-
-
-  
-   //console.log(result);
+	        //alert(data.results[0].passed); 
+            //console.log(result);
+		    $("#myModal").find(".modal-title").html('<center>'+ $scope.suite.name + " - Metrics ! </center>");
+		    $("#myModal").find(".modal-body").html('<canvas id="myChart" width="400" height="400"></canvas>'+
+			    '<div class="form-group">'+ 
+			    '<center><table id="table">'+ '<ul class="legend"><li><span class="superawesome"></span>Product Failure</li></ul>'+ 
+			    '<ul class="legend"><li><span class="awesome"></span>Test Success</li></ul>'+ 
+			    '<ul class="legend"><li><span class="notawesome"></span>Test Failure</li></ul></center>'+
+			    '<table border="1" style="width:100%"><tr>'+
+            '<th>Results</th>'+'<tr><td>Status: ' + data.results[0].status+ '</tr></td>'
+            +'<tr><td>Test File: '+ data.file +'</tr></td>'
+            +'<tr><td>Passed: '+    data.results[0].passed +'</tr></td>'
+            +'<tr><td>Failed: '+    data.results[0].failed +'</tr></td>'
+            +'<tr><td>Ignored: '+   data.results[0].ignored +'</tr></td>'
+            +'</div></table></td>');		
+		    $("#myModal").modal('show');
 		
+ 		    var ctx = $("#myChart").get(0).getContext("2d"); 
 
-		$("#myModal").find(".modal-title").html('<center>'+ $scope.suite.name + " - Metrics ! </center>");
-		$("#myModal").find(".modal-body").html('<canvas id="myChart" width="400" height="400"></canvas>'+
-			'<div class="form-group">'+ 
-			'<center><table id="table">'+ '<ul class="legend"><li><span class="superawesome"></span>Product Failure</li></ul>'+ 
-			'<ul class="legend"><li><span class="awesome"></span>Test Success</li></ul>'+ 
-			'<ul class="legend"><li><span class="notawesome"></span>Test Failure</li></ul></center>'+
-
-
-			'<table border="1" style="width:100%"><tr>'+
-        '<th>Results</th>'+'<tr><td>Status: ' + data.results[0].status+ '</tr></td>'
-        +'<tr><td>Test File: '+ data.file +'</tr></td>'
-        +'<tr><td>Passed: '+    data.results[0].passed +'</tr></td>'
-        +'<tr><td>Failed: '+    data.results[0].failed +'</tr></td>'
-        +'<tr><td>Ignored: '+   data.results[0].ignored +'</tr></td>'
-        +'</div></table></td>');
-
-		
-		$("#myModal").modal('show');
-
-
-
-		
- 		var ctx = $("#myChart").get(0).getContext("2d"); 
-
-        var data = [
-            {
-                value: data.results[0].failed /*results.failed*/,
-                color:"#F7464A",
-                highlight: "#FF5A5E",
-                label: "Product Failure",
-                labelColor : 'Black',
-                labelFontSize : '16'
-            },
-            {
-                value: data.results[0].passed /*results.passed*/,
-                color: "#46BFBD",
-                highlight: "#5AD3D1",
-                label: "Test Success"
-            },
-            {
-                value: data.results[0].ignored /*results.ignored*/,
-                color: "#FDB45C",
-                highlight: "#FFC870",
-                label: "Test Failure"
-            }
-        ];
+            var data = [
+                {
+                    value: data.results[0].failed /*results.failed*/,
+                    color:"#F7464A",
+                    highlight: "#FF5A5E",
+                    label: "Product Failure",
+                    labelColor : 'Black',
+                    labelFontSize : '16'
+                },
+                {
+                    value: data.results[0].passed /*results.passed*/,
+                    color: "#46BFBD",
+                    highlight: "#5AD3D1",
+                    label: "Test Success"
+                },
+                {
+                    value: data.results[0].ignored /*results.ignored*/,
+                    color: "#FDB45C",
+                    highlight: "#FFC870",
+                    label: "Test Failure"
+                }
+            ];
 
         var options = { 
           legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
@@ -601,49 +579,39 @@ angular.module('initProjApp').controller('WorkspaceCtrl', function ($scope, stor
 			console.log(data);
     		// called asynchronously if an error occurs
     		// or server returns response with an error status.
-    	$("#myModal").find(".modal-title").html($scope.suite.name + "<center>Test Results Not Available</center>");
-		$("#myModal").find(".modal-body").html(
-			'<div class="form-group">'+
-		    	'<center><label for="exampleInputFile">This test has not been run before. </label></center>'+
-		    	
-		    	'<center><p class="help-block">Tip: Automate this test before viewing metrics</p></center>'+
-		  	'</div>');
-		$("#myModal").modal('show');
-  		});
+    	    $("#myModal").find(".modal-title").html($scope.suite.name + "<center>Test Results Not Available</center>");
+		    $("#myModal").find(".modal-body").html(
+			    '<div class="form-group">'+
+		    	    '<center><label for="exampleInputFile">This test has not been run before. </label></center>'+		    	
+		    	    '<center><p class="help-block">Tip: Automate this test before viewing metrics</p></center>'+
+		  	    '</div>');
+		    $("#myModal").modal('show');
+  		 });
         
         //var legend = chart.generateLegend();
         //$(".modal-body").append(legend);
 	}
 
 		$scope.runAutomation = function(index) {
-
 			var url = "http://localhost:3579/api/run" ; //This URL is from the Phoenix API's default localhost
 														//Start The API .EXE file before attempting to run Requests 
 
 			var xhr = new XMLHttpRequest();    
 			xhr.open('GET', url);
-			 xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
-
+			xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
     		xhr.setRequestHeader('Access-Control-Allow-Methods', 'POST');
-    		xhr.setRequestHeader('Access-Control-Allow-Methods', 'DELETE');
-		
-			
+    		xhr.setRequestHeader('Access-Control-Allow-Methods', 'DELETE');	
 
 /*		var config = {
 
-            params: {
-
-             
-              
+            params: {             
                 format: "json",
               //  rvlimit: 50,
                 user: "TestUser",
                 team: "v-Team",
                 file: $scope.suite.name, //file path of test run
                 environment: "default",
-                callback: "JSON_CALLBACK"  
-
-
+                callback: "JSON_CALLBACK" 
             }   
 
             headers: {
@@ -659,12 +627,12 @@ angular.module('initProjApp').controller('WorkspaceCtrl', function ($scope, stor
    								'Access-Control-Allow-Origin': '*'
  							 },
  					data: { //format: "json",
-              		//  rvlimit: 50,
-                	user: "TestUser",
-                	team: "v-Team",
-                	file: $scope.suite.name, //file path of test run
-                	environment: "default",
-                	//callback: "JSON_CALLBACK"   },
+              		        //  rvlimit: 50,
+                	        user: "TestUser",
+                	        team: "v-Team",
+                	        file: $scope.suite.name, //file path of test run
+                	        environment: "default",
+                	        //callback: "JSON_CALLBACK"   },
 							}
 				}
 
@@ -675,18 +643,14 @@ angular.module('initProjApp').controller('WorkspaceCtrl', function ($scope, stor
    								'Access-Control-Allow-Origin': '*'
  							 },
  					data: { //format: "json",
-              		//  rvlimit: 50,
-                
-                	file: $scope.suite.name, //file path of test run
-                
-                //callback: "JSON_CALLBACK"   },
-					}
+              		        //  rvlimit: 50,               
+                	        file: $scope.suite.name, //file path of test run                
+                            //callback: "JSON_CALLBACK"   },
+					      }
 				}
 
-			$http(req).success(function(){});
-			$http(reqD).success(function(){});
-
-        
+		$http(req).success(function(){});
+		$http(reqD).success(function(){});        
 
 	}
 

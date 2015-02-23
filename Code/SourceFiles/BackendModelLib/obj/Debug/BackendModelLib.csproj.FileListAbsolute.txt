@@ -13,5 +13,6 @@ G:\udocdownloads\docs\GitHub\Test-Case\Code\SourceFiles\BackendModelLib\obj\Debu
 G:\udocdownloads\docs\GitHub\Test-Case\Code\SourceFiles\BackendModelLib\obj\Debug\BackendModelLib.pdb
 C:\Users\ART\Documents\GitHub\Test-Flow-Ver-2.0\Code\SourceFiles\BackendModelLib\bin\Debug\BackendModelLib.dll
 C:\Users\ART\Documents\GitHub\Test-Flow-Ver-2.0\Code\SourceFiles\BackendModelLib\bin\Debug\BackendModelLib.pdb
+C:\Users\ART\Documents\GitHub\Test-Flow-Ver-2.0\Code\SourceFiles\BackendModelLib\obj\Debug\BackendModelLib.csprojResolveAssemblyReference.cache
 C:\Users\ART\Documents\GitHub\Test-Flow-Ver-2.0\Code\SourceFiles\BackendModelLib\obj\Debug\BackendModelLib.dll
 C:\Users\ART\Documents\GitHub\Test-Flow-Ver-2.0\Code\SourceFiles\BackendModelLib\obj\Debug\BackendModelLib.pdb

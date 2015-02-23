@@ -1,3 +1,13 @@
+/* basic positioning */
+.legend { list-style: none; }
+.legend li { float: left; margin-right: 10px; }
+.legend span { border: 1px solid #ccc; float: left; width: 12px; height: 12px; margin: 2px; }
+/* your colors */
+.legend .superawesome { background-color: #F7464A; }
+.legend .awesome { background-color: #46BFBD; }
+.legend .kindaawesome { background-color: #FDB45C; }
+.legend .notawesome { background-color: #FDB45C; }
+/* line 6, ../../../sass/sass/main.scss */
 /* line 6, ../../../sass/sass/main.scss */
 body {
   background-color: #dadada;
